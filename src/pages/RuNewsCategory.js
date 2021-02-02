@@ -1,13 +1,22 @@
 import React from "react";
-//ReactRouter
-import {useHistory} from 'react-router-dom'
+import { useSelector } from "react-redux";
+//Styled
+import { NewsSection } from "../style/Style";
+//Animations
+import { topNewsAnimation } from "../animations/pageAnimation";
 
 const RuNewsCategory = () => {
-  //Url retrieval
-  const history = useHistory();
-  const url = history.location.pathname.substr(4) ;
-
-  return <div className="">RuNewsCategory : {url}</div>;
+  const section = useSelector((state) => state.app.section);
+  return (
+    <NewsSection
+      exit="exit"
+      variants={topNewsAnimation}
+      initial="hidden"
+      animate="show"
+    >
+      RuNewsCategory : {section}
+    </NewsSection>
+  );
 };
 
 export default RuNewsCategory;
